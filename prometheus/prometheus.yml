@@ -1,0 +1,15 @@
+# prometheus.yml
+global:
+    scrape_interval: 5s
+    external_labels:
+        monitor: 'my-monitor'
+        
+scrape_configs:
+
+    - job_name: 'app'
+      target_groups:
+          - targets: ['prometheus-app:8080']
+          
+    - job_name: 'node-exporter'
+      target_groups:
+          - targets: ['node-exporter:9100']
