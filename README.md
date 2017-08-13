@@ -8,8 +8,8 @@ Building Containers
 
 Nothing special if you already have Docker installed:
 
-    $ git clone https://github.com/buraksarp/ats-exporter.git
-    $ cd ats-exporter
+    $ git clone https://github.com/buraksarp/apache-traffic-server-exporter.git
+    $ cd apache-traffic-server-exporter
     $ docker-compose build 
 
 Running Containers with the docker-compose
