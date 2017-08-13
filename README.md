@@ -25,7 +25,7 @@ go to grafana UI: [http://localhost:3000](http://localhost:3000)
 
 Default username & password : admin
 
-Install grafana dashboard template for prometheus - [https://grafana.com/dashboards/2914(https://grafana.com/dashboards/2914)
+Install grafana dashboard template for prometheus - [https://grafana.com/dashboards/2914](https://grafana.com/dashboards/2914)
 
 
     
