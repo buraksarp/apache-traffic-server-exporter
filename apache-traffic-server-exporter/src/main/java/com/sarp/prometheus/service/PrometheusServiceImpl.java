@@ -33,7 +33,9 @@ public class PrometheusServiceImpl extends PrometheusComponents implements Prome
         AtsMetrics atsMetrics = null;
         try {
             atsMetrics = objectMapper.readValue(str.getBody(), AtsMetrics.class);
-        } catch (Exception e) {}
+        } catch (Exception e) {
+            logger.error("Unable to map AtsMetrics object.", e);
+        }
 
         return atsMetrics.getGlobalMetrics();
     }
