@@ -38,19 +38,19 @@ public class GlobalMetrics {
     //total cache
 
     @JsonProperty("proxy.process.cache.bytes_total")
-    private int cacheBytesTotal;
+    private long cacheBytesTotal;
 
     @JsonProperty("proxy.process.cache.bytes_used")
-    private int cacheBytesUsed;
+    private long cacheBytesUsed;
 
     @JsonProperty("proxy.node.cache.bytes_free")
-    private int cacheBytesFree;
+    private long cacheBytesFree;
 
     @JsonProperty("proxy.node.cache_total_hits")
-    private int cacheTotalHits;
+    private long cacheTotalHits;
 
     @JsonProperty("proxy.node.cache_total_misses")
-    private int cacheTotalMisses;
+    private long cacheTotalMisses;
 
     @JsonProperty("proxy.node.cache_hit_ratio") // both ram and disk
     private double cacheHitRatio;
