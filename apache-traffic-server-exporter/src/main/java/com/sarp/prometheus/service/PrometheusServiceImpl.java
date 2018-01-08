@@ -2,15 +2,15 @@ package com.sarp.prometheus.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sarp.prometheus.model.AtsMetrics;
-
 import com.sarp.prometheus.model.GlobalMetrics;
-
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.Objects;
 
 /**
  * Created by sarp on 8/11/17.
@@ -37,7 +37,7 @@ public class PrometheusServiceImpl extends PrometheusComponents implements Prome
             logger.error("Unable to map AtsMetrics object.", e);
         }
 
-        return atsMetrics.getGlobalMetrics();
+        return Objects.requireNonNull(atsMetrics).getGlobalMetrics();
     }
 
     @Override
