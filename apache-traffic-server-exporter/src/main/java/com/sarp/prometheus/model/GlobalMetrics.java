@@ -12,6 +12,23 @@ import lombok.ToString;
 @ToString
 public class GlobalMetrics {
 
+    // main metrics
+
+    @JsonProperty("proxy.node.restarts.manager.start_time")
+    private long managerStartTime;
+
+    @JsonProperty("proxy.node.restarts.proxy.start_time")
+    private long proxyStartTime;
+
+    @JsonProperty("proxy.node.restarts.proxy.cache_ready_time")
+    private long proxyCacheReadyTime;
+
+    @JsonProperty("proxy.node.restarts.proxy.stop_time")
+    private long proxyStopTime;
+
+    @JsonProperty("proxy.node.restarts.proxy.restart_count")
+    private long proxyRestartCount;
+
     @JsonProperty("proxy.node.http.throughput")
     private double throughput;
 

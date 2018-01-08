@@ -8,6 +8,31 @@ import io.prometheus.client.Gauge;
 
 public abstract class PrometheusComponents {
 
+    protected final Gauge managerStartTime = Gauge.build()
+            .name("proxy_node_restarts_manager_start_time")
+            .help("manager start time")
+            .register();
+
+    protected final Gauge proxyStartTime = Gauge.build()
+            .name("proxy_node_restarts_proxy_start_time")
+            .help("proxy start time")
+            .register();
+
+    protected final Gauge proxyCacheReadyTime = Gauge.build()
+            .name("proxy_node_restarts_proxy_cache_ready_time")
+            .help("proxy cache ready time")
+            .register();
+
+    protected final Gauge proxyStopTime = Gauge.build()
+            .name("proxy_node_restarts_proxy_stop_time")
+            .help("proxy stop time")
+            .register();
+
+    protected final Gauge proxyRestartCount = Gauge.build()
+            .name("proxy_node_restarts_proxy_restart_count")
+            .help("proxy restart count")
+            .register();
+
     protected final Gauge gaugeThroughput = Gauge.build()
             .name("proxy_node_http_throughput")
             .help("proxy node throughput")

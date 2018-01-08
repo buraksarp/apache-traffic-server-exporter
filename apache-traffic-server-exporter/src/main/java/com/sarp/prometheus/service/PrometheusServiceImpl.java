@@ -47,6 +47,11 @@ public class PrometheusServiceImpl extends PrometheusComponents implements Prome
 
         //main metrics
 
+        managerStartTime.set(globalMetrics.getManagerStartTime());
+        proxyCacheReadyTime.set(globalMetrics.getProxyCacheReadyTime());
+        proxyRestartCount.set(globalMetrics.getProxyRestartCount());
+        proxyStartTime.set(globalMetrics.getProxyStartTime());
+        proxyStopTime.set(globalMetrics.getProxyStopTime());
         gaugeThroughput.set(globalMetrics.getThroughput());
         gaugeConcurrentClientCount.set(globalMetrics.getConcurrentClientCount());
 
