@@ -2,15 +2,15 @@ package com.sarp.prometheus.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sarp.prometheus.model.AtsMetrics;
-
 import com.sarp.prometheus.model.GlobalMetrics;
-
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.Objects;
 
 /**
  * Created by sarp on 8/11/17.
@@ -33,9 +33,11 @@ public class PrometheusServiceImpl extends PrometheusComponents implements Prome
         AtsMetrics atsMetrics = null;
         try {
             atsMetrics = objectMapper.readValue(str.getBody(), AtsMetrics.class);
-        } catch (Exception e) {}
+        } catch (Exception e) {
+            logger.error("Unable to map AtsMetrics object.", e);
+        }
 
-        return atsMetrics.getGlobalMetrics();
+        return Objects.requireNonNull(atsMetrics).getGlobalMetrics();
     }
 
     @Override
@@ -45,6 +47,11 @@ public class PrometheusServiceImpl extends PrometheusComponents implements Prome
 
         //main metrics
 
+        managerStartTime.set(globalMetrics.getManagerStartTime());
+        proxyCacheReadyTime.set(globalMetrics.getProxyCacheReadyTime());
+        proxyRestartCount.set(globalMetrics.getProxyRestartCount());
+        proxyStartTime.set(globalMetrics.getProxyStartTime());
+        proxyStopTime.set(globalMetrics.getProxyStopTime());
         gaugeThroughput.set(globalMetrics.getThroughput());
         gaugeConcurrentClientCount.set(globalMetrics.getConcurrentClientCount());
 
