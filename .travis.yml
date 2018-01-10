@@ -2,6 +2,9 @@ language: java
 jdk:
   - oraclejdk8
 
+before_install:
+  - export BUILD_COVERAGE="$([ $TRAVIS_JDK_VERSION == 'oraclejdk8' ] && echo 'true')"
+
 script:
   - cd apache-traffic-server-exporter
   - mvn install
