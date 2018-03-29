@@ -37,16 +37,16 @@ Default username & password : admin
 
 Install grafana dashboard template for prometheus - [https://grafana.com/dashboards/2914](https://grafana.com/dashboards/2914)
 
-## create data source
+### create data source
 
 
     Name   : edge-data (or your favourite data source name)
-    Type   : prometheus
-
-    
-    
+    Type   : prometheus    
     URL    : http://prometheus:9090
     Access : proxy
-    leave the other fields default
+    leave the other fields default, click on 'Save & Test'
 
-![Alt text](docs/new-datasource.png?raw=true "New data source")
+![Alt text](docs/new-datasource.png?raw=false "New data source")
+
+### import dashboard
+
