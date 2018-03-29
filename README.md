@@ -41,6 +41,9 @@ Install grafana dashboard template for prometheus - [https://grafana.com/dashboa
 
     Name   : edge-data (or your favourite data source name)
     Type   : prometheus
+
+    
+    
     URL    : http://prometheus:9090
     Access : proxy
     leave the other fields default
