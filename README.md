@@ -39,6 +39,11 @@ Install grafana dashboard template for prometheus - [https://grafana.com/dashboa
 
 1. create data source
 
+    apache-traffic-server-exporter/src/main/resources/application.properties 
+    > apache-traffic-server.stats.uri = http://<ats_edge_server_address>/_stats 
+
+
+
     Name   : edge-data (or your favourite data source name)
     Type   : prometheus
 
