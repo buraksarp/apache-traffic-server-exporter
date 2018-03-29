@@ -46,7 +46,16 @@ Install grafana dashboard template for prometheus - [https://grafana.com/dashboa
     Access : proxy
     leave the other fields default, click on 'Save & Test'
 
-![Alt text](docs/new-datasource.png?raw=false "New data source")
+![Alt text](docs/new-datasource.png?raw=true "New data source")
 
 ### import dashboard
 
+Paste following dashboard url https://grafana.com/dashboards/2914 in, and the dashboard will automatically be imported. Then just select the datasource (edge-data) which has just been created in previous step. 
+
+    Grafana.com Dashboard   : https://grafana.com/dashboards/2914
+    prometheus              : edge-data (or the one you have created)
+    click Import 
+
+![Alt text](docs/import-dashboard.png?raw=true "Import dashboard")
+
+![Alt text](docs/import-dashboard-2.png?raw=true "Import dashboard")
