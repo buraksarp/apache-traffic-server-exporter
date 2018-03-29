@@ -37,11 +37,7 @@ Default username & password : admin
 
 Install grafana dashboard template for prometheus - [https://grafana.com/dashboards/2914](https://grafana.com/dashboards/2914)
 
-1. create data source
-
-    apache-traffic-server-exporter/src/main/resources/application.properties 
-    > apache-traffic-server.stats.uri = http://<ats_edge_server_address>/_stats 
-
+1 create data source
 
 
     Name   : edge-data (or your favourite data source name)
