@@ -13,9 +13,7 @@ import org.springframework.web.client.RestTemplate;
 @Configuration
 public class RestTemplateConfig {
 
-    @Value("${rest-template.root.URI}")
-    private String rootURI;
-
+   
     @Value("${rest-template.connection.timeout}")
     private int connectTimeout;
 
@@ -24,8 +22,7 @@ public class RestTemplateConfig {
 
     @Bean
     public RestTemplate restTemplate(RestTemplateBuilder restTemplateBuilder) {
-        return restTemplateBuilder.rootUri(rootURI)
-                .setConnectTimeout(connectTimeout)
+        return restTemplateBuilder.setConnectTimeout(connectTimeout)
                 .setReadTimeout(readTimeout)
                 .build();
     }

@@ -6,6 +6,7 @@ import com.sarp.prometheus.model.GlobalMetrics;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -16,7 +17,6 @@ import java.util.Objects;
  * Created by sarp on 8/11/17.
  */
 
-
 @Service
 @RequiredArgsConstructor
 public class PrometheusServiceImpl extends PrometheusComponents implements PrometheusService {
@@ -25,20 +25,9 @@ public class PrometheusServiceImpl extends PrometheusComponents implements Prome
 
     private final RestTemplate restTemplate;
     private final ObjectMapper objectMapper;
-
-    @Override
-    public GlobalMetrics getAtsMetrics() {
-        ResponseEntity<String> str = restTemplate.getForEntity("/_stats", String.class);
-
-        AtsMetrics atsMetrics = null;
-        try {
-            atsMetrics = objectMapper.readValue(str.getBody(), AtsMetrics.class);
-        } catch (Exception e) {
-            logger.error("Unable to map AtsMetrics object.", e);
-        }
-
-        return Objects.requireNonNull(atsMetrics).getGlobalMetrics();
-    }
+    
+    @Value("${apache-traffic-server.stats.uri}")
+    private String atsStatsUri;
 
     @Override
     public void ingestAtsMetrics() {
@@ -73,6 +62,20 @@ public class PrometheusServiceImpl extends PrometheusComponents implements Prome
         gaugeRamCacheHitRatio.set(globalMetrics.getRamCacheHitRatio());
 
         logger.info(globalMetrics.toString());
+    }
+    
+    private GlobalMetrics getAtsMetrics() {
+    	
+        ResponseEntity<String> response = restTemplate.getForEntity(atsStatsUri, String.class);
+
+        AtsMetrics atsMetrics = null;
+        try {
+            atsMetrics = objectMapper.readValue(response.getBody(), AtsMetrics.class);
+        } catch (Exception e) {
+            logger.error("Unable to map AtsMetrics object.", e);
+        }
+
+        return Objects.requireNonNull(atsMetrics).getGlobalMetrics();
     }
 
 }
