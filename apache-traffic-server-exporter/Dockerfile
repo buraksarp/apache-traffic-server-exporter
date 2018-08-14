@@ -7,6 +7,7 @@ RUN apt-get install -y maven
 # Adding prometheusa-app to container
 ADD . /usr/prometheus  
 WORKDIR /usr/prometheus
+ARG MAVEN_OPTS
 RUN ["mvn", "package"]
 
 EXPOSE 8080 
